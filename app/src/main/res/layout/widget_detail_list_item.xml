@@ -18,7 +18,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="8dp"
+            android:paddingStart="8dp"
             android:paddingRight="8dp"
+            android:paddingEnd="8dp"
             android:layout_gravity="left">
 
             <TextView
@@ -46,7 +48,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="8dp"
+            android:paddingStart="8dp"
             android:paddingRight="8dp"
+            android:paddingEnd="8dp"
             android:layout_gravity="left">
 
             <TextView
