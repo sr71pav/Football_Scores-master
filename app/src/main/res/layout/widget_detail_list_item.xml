@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeight"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/green07">
 
         <LinearLayout
             android:layout_width="wrap_content"

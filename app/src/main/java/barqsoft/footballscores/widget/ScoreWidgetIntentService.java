@@ -73,7 +73,6 @@ public class ScoreWidgetIntentService extends IntentService
             return;
         }
 
-        // TODO - Extract the score data from the Cursor
         String homeTeam = data.getString(INDEX_HOME);
         String awayTeam = data.getString(INDEX_AWAY);
         String homeScore = data.getString(INDEX_HOME_GOALS);
@@ -94,7 +93,6 @@ public class ScoreWidgetIntentService extends IntentService
 
             RemoteViews views = new RemoteViews(getPackageName(), layoutId);
 
-            // TODO - Add the data to the RemoteViews
             views.setTextViewText(R.id.widget_home_team, homeTeam);
             views.setTextViewText(R.id.widget_away_team, awayTeam);
             views.setTextViewText(R.id.widget_home_score, homeScore);
