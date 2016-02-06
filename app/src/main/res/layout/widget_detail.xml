@@ -18,6 +18,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
+              android:background="@android:color/white"
               android:padding="@dimen/widget_margin">
 
     <FrameLayout
@@ -41,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
-            android:dividerHeight="0dp"
+            android:dividerHeight="8dp"
             tools:listitem="@layout/widget_detail_list_item"/>
         <TextView
             android:id="@+id/widget_empty_view"

@@ -10,19 +10,22 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeight"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:background="@color/green07">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
             android:layout_gravity="left">
 
             <TextView
                 android:id="@+id/widget_home_team"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:text="Derby"
                 android:textAppearance="?android:textAppearanceMedium"
@@ -37,23 +40,20 @@
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="#000000"/>
         </LinearLayout>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:text=""
-            android:textAppearance="?android:textAppearanceLarge"/>
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="right">
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:layout_gravity="left">
 
             <TextView
                 android:id="@+id/widget_away_team"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:text="Man. U."
                 android:textAppearance="?android:textAppearanceMedium"

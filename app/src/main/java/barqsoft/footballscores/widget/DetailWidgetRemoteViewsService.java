@@ -2,8 +2,10 @@ package barqsoft.footballscores.widget;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Binder;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
@@ -16,6 +18,8 @@ import barqsoft.footballscores.R;
  */
 public class DetailWidgetRemoteViewsService extends RemoteViewsService
 {
+    private static final String NO_SCORE = "-";
+
     private static final String[] SCORE_COLUMNS = {
             DatabaseContract.scores_table.DATE_COL,
             DatabaseContract.scores_table.HOME_COL,
@@ -54,6 +58,17 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService
                 final long identityToken = Binder.clearCallingIdentity();
                 Uri matchesUri = DatabaseContract.BASE_CONTENT_URI;
 
+                String sqlQry = SQLiteQueryBuilder.buildQueryString(false,
+                        "TEST",
+                        SCORE_COLUMNS,
+                        "NOT " + DatabaseContract.scores_table.HOME_GOALS_COL + "='-1'",
+                        null,
+                        null,
+                        DatabaseContract.scores_table.DATE_COL + " DESC",
+                        null);
+
+                Log.i("FOPOTBALL SCORES", sqlQry);
+
                 data = getContentResolver().query(matchesUri,
                         SCORE_COLUMNS,
                         null,
@@ -89,13 +104,22 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService
 
                 String homeTeam = data.getString(INDEX_HOME);
                 String awayTeam = data.getString(INDEX_AWAY);
-                String homeScore = data.getString(INDEX_HOME_GOALS);
-                String awayScore = data.getString(INDEX_AWAY_GOALS);
+                int homeScore = data.getInt(INDEX_HOME_GOALS);
+                int awayScore = data.getInt(INDEX_AWAY_GOALS);
 
                 views.setTextViewText(R.id.widget_home_team, homeTeam);
                 views.setTextViewText(R.id.widget_away_team, awayTeam);
-                views.setTextViewText(R.id.widget_home_score, homeScore);
-                views.setTextViewText(R.id.widget_away_score, awayScore);
+
+                if (homeScore < 0)
+                {
+                    views.setTextViewText(R.id.widget_home_score, NO_SCORE);
+                    views.setTextViewText(R.id.widget_away_score, NO_SCORE);
+                }
+                else
+                {
+                    views.setTextViewText(R.id.widget_home_score, String.valueOf(homeScore));
+                    views.setTextViewText(R.id.widget_away_score, String.valueOf(awayScore));
+                }
 
                 return views;
             }
